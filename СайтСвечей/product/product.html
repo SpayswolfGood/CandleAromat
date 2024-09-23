@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ароматическая свеча "Весеннее утро"</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-images {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+            .product-images img {
+                width: 100%;
+                height: auto;
+            }
+
+        .product-details {
+            /* Никаких стилей для flex, поскольку блок уже не находится в flex-контейнере */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #558b2f; /* Зеленый цвет */
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .short-description {
+            margin-bottom: 15px;
+            color: #558b2f; /* Зеленый цвет */
+        }
+
+        .description {
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .characteristics {
+            margin-bottom: 20px;
+        }
+
+            .characteristics h3 {
+                margin-top: 0;
+                color: #558b2f; /* Зеленый цвет */
+            }
+
+            .characteristics dl {
+                margin-top: 10px;
+            }
+
+            .characteristics dt {
+                font-weight: bold;
+                color: #333;
+            }
+
+        .reviews {
+            margin-top: 20px;
+        }
+
+            .reviews h3 {
+                margin-top: 0;
+                color: #558b2f; /* Зеленый цвет */
+            }
+
+        .review {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+            .review .author {
+                font-weight: bold;
+                color: #333;
+            }
+
+        .buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            background-color: #558b2f; /* Зеленый цвет */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .button:hover {
+                background-color: #457321; /* Темнее зеленый */
+            }
+
+        /* Стиль для слайдера */
+        .product-images .slider-thumbs {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .product-images .slider-thumb {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border: 1px solid #ddd;
+            cursor: pointer;
+            transition: border-color 0.3s ease;
+        }
+
+            .product-images .slider-thumb:hover {
+                border-color: #558b2f;
+            }
+
+            .product-images .slider-thumb.active {
+                border-color: #558b2f;
+            }
+
+        .product-images img {
+            transition: opacity 0.3s ease; /* Добавляем плавный переход */
+        }
+
+            .product-images img.hidden {
+                opacity: 0; /* Скрываем изображения, не являющиеся активными */
+            }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="product">
+            <div class="product-images">
+                <img src="img/1.jpg" alt="Ароматическая свеча">
+                <img src="img/1.jpg" alt="Ароматическая свеча" class="hidden">
+                <div class="slider-thumbs">
+                    <img class="slider-thumb active" src="img/1.jpg" alt="Миниатюра свечи 1">
+                    <img class="slider-thumb" src="img/1.jpg" alt="Миниатюра свечи 2">
+                </div>
+            </div>
+            <div class="product-details">
+                <h1>Ароматическая свеча "Весеннее утро"</h1>
+                <p class="price">800 руб.</p>
+                <p class="short-description">
+                    Нежная свеча с ароматом весенних цветов, наполнит ваш дом ароматом свежести и легкости.
+                </p>
+                <p class="description">
+                    Свеча "Весеннее утро" создана из натурального соевого воска с добавлением эфирных масел.  Аромат свечи  — это  композиция из  цветов  липы,  жасмина  и  ландыша,  которая  подарит  вам  чувство  весеннего  пробуждения  и  радости.
+                </p>
+                <div class="characteristics">
+                    <h3>Характеристики</h3>
+                    <dl>
+                        <dt>Аромат:</dt>
+                        <dd>Цветочный</dd>
+                        <dt>Время горения:</dt>
+                        <dd>20 часов</dd>
+                        <dt>Размер:</dt>
+                        <dd>8 см</dd>
+                    </dl>
+                </div>
+                <div class="reviews">
+                    <h3>Отзывы</h3>
+                    <div class="review">
+                        <p class="author">Ольга Иванова:</p>
+                        <p>Прекрасный аромат! Свеча создает уютную атмосферу и наполняет дом приятным запахом.</p>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <button class="button">Купить</button>
+                    <button class="button">В корзину</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const images = document.querySelectorAll('.product-images img');
+        const thumbs = document.querySelectorAll('.product-images .slider-thumb');
+        let currentImageIndex = 0;
+
+        // Функция для показа изображения по индексу
+        function showImage(index) {
+            // Скрываем все изображения
+            images.forEach(img => {
+                img.classList.add('hidden');
+            });
+
+            thumbs.forEach(img => {
+                img.classList.remove('hidden');
+            });
+            // Показываем нужное изображение
+            images[index].classList.remove('hidden');
+
+            // Обновляем активную миниатюру
+            thumbs.forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+        }
+
+        // Обработчики кликов по миниатюрам
+        thumbs.forEach((thumb, index) => {
+            thumb.addEventListener('click', () => {
+                currentImageIndex = index;
+                showImage(currentImageIndex);
+            });
+        });
+    </script>
+
+</body>
+</html>
