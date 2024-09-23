@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Корзина</title>
+    <title>РљРѕСЂР·РёРЅР°</title>
     <style>
         @font-face {
             font-family: 'Shantell Sans';
@@ -193,7 +193,7 @@
 
 
         .clear-cart-button {
-            background-color: #684E3D; /* Коричневый цвет, подобный кофе */
+            background-color: #684E3D; /* РљРѕСЂРёС‡РЅРµРІС‹Р№ С†РІРµС‚, РїРѕРґРѕР±РЅС‹Р№ РєРѕС„Рµ */
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -205,7 +205,7 @@
         }
 
             .clear-cart-button:hover {
-                background-color: #503626; /* Более темный коричневый при наведении */
+                background-color: #503626; /* Р‘РѕР»РµРµ С‚РµРјРЅС‹Р№ РєРѕСЂРёС‡РЅРµРІС‹Р№ РїСЂРё РЅР°РІРµРґРµРЅРёРё */
             }
 
 
@@ -256,12 +256,12 @@
             </label>
             <label href="index.html" class="logo">STASSI</label>
             <ul class="menu-phone">
-                <li><a href="katolog.html" class="up-button">Каталог</a></li>
-                <li><a href="index.html #good" class="up-button">Примущества</a></li>
-                <li><a href="index.html #sale" class="up-button">Акции</a></li>
-                <li><a href="index.html #contact" class="up-button">Контакты</a></li>
-                <li><a href="index.html #now" class="up-button">Новинки</a></li>
-                <li><button id="go-to-cart" class="up-button">Корзина<a id="cart-count"> 1</a></button></li>
+                <li><a href="katolog.html" class="up-button">РљР°С‚Р°Р»РѕРі</a></li>
+                <li><a href="index.html #good" class="up-button">РџСЂРёРјСѓС‰РµСЃС‚РІР°</a></li>
+                <li><a href="index.html #sale" class="up-button">РђРєС†РёРё</a></li>
+                <li><a href="index.html #contact" class="up-button">РљРѕРЅС‚Р°РєС‚С‹</a></li>
+                <li><a href="index.html #now" class="up-button">РќРѕРІРёРЅРєРё</a></li>
+                <li><button id="go-to-cart" class="up-button">РљРѕСЂР·РёРЅР°<a id="cart-count"> 1</a></button></li>
             </ul>
         </nav>
     </header>
@@ -269,11 +269,11 @@
     <main>
         <div class="ob">
             <h2 class="text-cor">
-                Содержимое корзины
+                РЎРѕРґРµСЂР¶РёРјРѕРµ РєРѕСЂР·РёРЅС‹
             </h2>
             <div class="container" id="cart-items"></div>
-            <button id="clear-cart" class="clear-cart-button">Очистить корзину</button>
-            <button id="go-back" class="clear-cart-button">Вернуться в магазин</button>
+            <button id="clear-cart" class="clear-cart-button">РћС‡РёСЃС‚РёС‚СЊ РєРѕСЂР·РёРЅСѓ</button>
+            <button id="go-back" class="clear-cart-button">Р’РµСЂРЅСѓС‚СЊСЃСЏ РІ РјР°РіР°Р·РёРЅ</button>
         </div>
     </main>
 
@@ -285,7 +285,7 @@
             cartItemsContainer.innerHTML = '';
 
             if (cart.length === 0) {
-                cartItemsContainer.innerHTML = '<p>Корзина пуста.</p>';
+                cartItemsContainer.innerHTML = '<p>РљРѕСЂР·РёРЅР° РїСѓСЃС‚Р°.</p>';
                 return;
             }
 
@@ -294,14 +294,14 @@
                 cartItemDiv.className = 'cart-item';
                 cartItemDiv.innerHTML = `
                     <img src="${item.image}" alt="${item.name}">
-                    <p>${item.name} - ${item.price} руб.</p>
-                    <button class="remove-btn" data-index="${index}">Удалить из корзины</button>
-                    <div class="ve" onclick="location.href ='${item.link}'">Товар</div>
+                    <p>${item.name} - ${item.price} СЂСѓР±.</p>
+                    <button class="remove-btn" data-index="${index}">РЈРґР°Р»РёС‚СЊ РёР· РєРѕСЂР·РёРЅС‹</button>
+                    <div class="ve" onclick="location.href ='${item.link}'">РўРѕРІР°СЂ</div>
                     `;
                 cartItemsContainer.appendChild(cartItemDiv);
             });
 
-            // Добавляем обработчики событий для кнопок удаления
+            // Р”РѕР±Р°РІР»СЏРµРј РѕР±СЂР°Р±РѕС‚С‡РёРєРё СЃРѕР±С‹С‚РёР№ РґР»СЏ РєРЅРѕРїРѕРє СѓРґР°Р»РµРЅРёСЏ
             const removeButtons = document.querySelectorAll('.remove-btn');
             removeButtons.forEach(button => {
                 button.addEventListener('click', (event) => {
@@ -312,21 +312,21 @@
         }
 
         function removeFromCart(index) {
-            cart.splice(index, 1); // Удаляем товар из массива
-            localStorage.setItem('cart', JSON.stringify(cart)); // Обновляем localStorage
-            displayCartItems(); // Обновляем отображение корзины
+            cart.splice(index, 1); // РЈРґР°Р»СЏРµРј С‚РѕРІР°СЂ РёР· РјР°СЃСЃРёРІР°
+            localStorage.setItem('cart', JSON.stringify(cart)); // РћР±РЅРѕРІР»СЏРµРј localStorage
+            displayCartItems(); // РћР±РЅРѕРІР»СЏРµРј РѕС‚РѕР±СЂР°Р¶РµРЅРёРµ РєРѕСЂР·РёРЅС‹
         }
 
-        // Очистка корзины
+        // РћС‡РёСЃС‚РєР° РєРѕСЂР·РёРЅС‹
         document.getElementById('clear-cart').addEventListener('click', () => {
             localStorage.removeItem('cart');
             cart = [];
             displayCartItems();
         });
 
-        // Возврат в магазин
+        // Р’РѕР·РІСЂР°С‚ РІ РјР°РіР°Р·РёРЅ
         document.getElementById('go-back').addEventListener('click', () => {
-            window.location.href = 'index.html'; // Замените на имя вашего файла с магазином
+            window.location.href = 'index.html'; // Р—Р°РјРµРЅРёС‚Рµ РЅР° РёРјСЏ РІР°С€РµРіРѕ С„Р°Р№Р»Р° СЃ РјР°РіР°Р·РёРЅРѕРј
         });
 
         displayCartItems();
