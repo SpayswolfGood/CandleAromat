@@ -162,8 +162,8 @@ nav {
     height: 15vw;
     border-radius: 16px;
     object-fit: none;
-    left: 15vw;
-    top: 15vw;
+    left: 75%;
+    top: 75%;
 }
 
 .main-text-container{
@@ -239,7 +239,7 @@ nav {
     padding-right: 10px;
     padding-left: 10px;
     display: inline;
-    height:7vh;
+    height:7vw;
 }
 
 .good-container-icon {
@@ -256,11 +256,10 @@ nav {
 }
 
 .good-text-min {
+    text-align:center;
     font-family: sans-serif;
     font-size: 18px;
-    word-wrap: normal;
     color: #000000;
-    line-height: 24px;
     font-weight:normal;
     opacity:0.7;
     padding-bottom:5vh;
@@ -283,7 +282,7 @@ nav {
 
 .sale-glav-text {
     color:white;
-    font-size: 7vh;
+    font-size: 4vw;
     font-family: 'Bad Script', sans-serif;
     font-weight: 700;
     padding:2vh;
@@ -342,14 +341,22 @@ nav {
 
 .new-towar-con {
     display: flex;
-    gap: 30px;
+    flex-direction:row;
+    gap: 2vw;
+    justify-content: center;
+}
+
+.new-towar-con-item {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;
     justify-content: center;
 }
 
 .new-towar-con2{
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:3vw;
 }
 
 .new-towar-block{
@@ -367,8 +374,8 @@ nav {
 }
 
 .new-towar-block-min {
-    width: 19vw;
-    height: 19vw;
+    width: 18vw;
+    height: 18vw;
     background-color: #bcaaa4;
     border-radius: 5%;
 }
@@ -383,8 +390,8 @@ nav {
 .new-towar-txt {
     font-family: sans-serif;
     font-weight: bold;
-    font-size: 48px;
-    margin-bottom: 16px;
+    font-size: 4vw;
+    margin-bottom: 2vw;
     color: white;
 }
 
@@ -424,24 +431,34 @@ nav {
     text-align: center;
 }
 
+    .contact-info-glav-item:hover{
+        cursor:pointer;
+    }
+
+
 .contact-info-item {
-    display:flex;
+    display: flex;
     background-color: white;
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    margin:10px 10px;
-    justify-content:center;
-    align-content:center;
+    margin: 10px 10px;
+    justify-content: center;
+    align-content: center;
+    transition: all 0.5s ease-out;
 }
 
-.contact-info-img{
-    width:50%;
-    height:50%;
-    background-image:url('img/insta.svg');
-    background-size:contain;
-    margin:auto;
-}
+        .contact-info-item:hover{
+            transform:scale(1.2);
+        }
+
+        .contact-info-img {
+            width: 50%;
+            height: 50%;
+            background-image: url('img/insta.svg');
+            background-size: contain;
+            margin: auto;
+        }
 .contact-info-img1 {
     width: 50%;
     height: 50%;
@@ -471,7 +488,123 @@ nav {
         transform: translateY(0%);
     }
 
-@media (max-width: 1060px) {
+.container {
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom:5vw;
+}
+
+.container-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2vw;
+}
+
+.cylinder {
+    width: 15vw;
+    height: 30vw;
+    margin: 0 20px;
+    background-color: #ccc; /* Цвет цилиндра */
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1vw 2vw rgba(0, 0, 0, 0.3); /* Увеличенная тень для эффекта объема */
+    transform: perspective(500px) rotateX(5deg); /* Добавление перспективы */
+}
+
+.liquid {
+    width: 100%;
+    height: 0;
+    background-color: #b4978b; /* Цвет жидкости */
+    position: absolute;
+    bottom: 0;
+    transition: height 0.5s ease, transform 0.5s ease; /* Добавляем трансформацию */
+    box-shadow: inset 0 -5px 15px rgba(255, 255, 255, 0.5); /* Блик на жидкости */
+}
+
+    .liquid::before {
+        content: '';
+        position: absolute;
+        bottom: 100%; /* Позиция фитиля по центру жидкости */
+        left: 50%;
+        width: 0.8vw; /* Ширина фитиля */
+        height: 2vw; /* Высота фитиля */
+        background-image: linear-gradient(#000000,#00000000); /* Цвет фитиля с прозрачностью */
+        border-radius: 5px; /* Закругление краев фитиля */
+        transform: translate(-50%, 50%); /* Центрирование фитиля */
+    }
+
+    .liquid::after {
+        content: '';
+        position: absolute;
+        top: -2vw; /* Позиция блика над жидкостью */
+        left: 0;
+        width: 100%;
+        height: 20%; /* Высота блика */
+        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); /* Градиент для блика */
+        border-radius: 10px; /* Закругление краев блика */
+    }
+
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #67564f;
+    font-size: 1.6vw;
+    font-weight: 200;
+    font-family: 'Brush445', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.text2 {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #67564f;
+    font-size: 1.1vw;
+    font-weight: 200;
+    font-family: 'Brush445', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.cylinder:nth-child(1) .liquid {
+    height: 80%; /* Высота жидкости в первом цилиндре */
+}
+
+.cylinder:nth-child(2) .liquid {
+    height: 60%; /* Высота жидкости во втором цилиндре */
+}
+
+.cylinder:nth-child(3) .liquid {
+    height: 40%; /* Высота жидкости в третьем цилиндре */
+}
+
+.cylinder:nth-child(4) .liquid {
+    height: 20%; /* Высота жидкости в четвертом цилиндре */
+}
+
+
+@keyframes rise {
+    0% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -100px) scale(1.5);
+        opacity: 0; /* Дым исчезает по мере подъема */
+    }
+}
+
+@media (max-width: 1100px) {
     .checkbtn {
         display: block;
         order: 1;
@@ -526,6 +659,8 @@ nav {
         font-weight: bold;
         opacity: 0.7;
     }
+
+
 }
 
 @media (max-width: 900px) {
@@ -613,6 +748,20 @@ nav {
         opacity: 0.7;
         padding-bottom: 5vh;
     }
+
+    .cylinder {
+        width: 20vw;
+        height: 36vw;
+        margin: 0 2vw;
+    }
+
+    .text {
+        font-size: 2.8vw;
+    }
+
+    .text2 {
+        font-size: 2.0vw;
+    }
 }
 
 @media (max-width: 800px) {
@@ -649,144 +798,114 @@ nav {
         opacity: 0.7;
     }
 
+    .good-imges {
+        width: 30vw;
+        height: 30vw;
+        border-radius: 5%;
+    }
+
     .new-towar-txt {
-        font-family: sans-serif;
-        font-weight: bold;
-        font-size: 36px;
-        margin-bottom: 16px;
-        color: white;
+        font-size: 7vw;
+        margin-bottom: 2vw;
+    }
+
+    .new-towar-con {
+        flex-direction: column;
+        gap: 3vw;
+    }
+
+    .new-towar-con-item {
+        display: flex;
+        flex-direction: row;
+        gap: 3vw;
+        justify-content: center;
+    }
+
+    .new-towar-con2 {
+        display: flex;
+        flex-direction: column;
+        gap: 3vw;
+    }
+
+    .new-towar-block {
+        width: 60vw;
+        height: auto;
+        background-color: #bcaaa4;
+        border-radius: 5%;
+    }
+
+    .new-towar-block-min {
+        width: 28vw;
+        height: 28vw;
+        background-color: #bcaaa4;
+        border-radius: 5%;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sale-glav-text {
+        font-size: 7vw;
+    }
+
+    .main {
+        flex-direction:column-reverse;
+    }
+
+    .img1 {
+        margin-top: 30px;
+        margin-left: 10vw;
+        width: 40vw;
+        height: 45vw;
+    }
+
+    .img2 {
+        width: 25vw;
+        height: 25vw;
     }
 }
 
+@media (max-width: 620px) {
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 30vw;
-}
+    .cylinder {
+        width: 30vw;
+        height: 54vw;
+        margin: 0 2vw;
 
-.cylinder {
-    width: 10vw;
-    height: 20vw;
-    margin: 0 20px;
-    background-color: #ccc; /* Цвет цилиндра */
-    border-radius: 10px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Увеличенная тень для эффекта объема */
-    transform: perspective(500px) rotateX(5deg); /* Добавление перспективы */
-}
-
-.liquid {
-    width: 100%;
-    height: 0;
-    background-color: #b4978b; /* Цвет жидкости */
-    position: absolute;
-    bottom: 0;
-    transition: height 0.5s ease, transform 0.5s ease; /* Добавляем трансформацию */
-    box-shadow: inset 0 -5px 15px rgba(255, 255, 255, 0.5); /* Блик на жидкости */
-}
-
-    .liquid::before {
-        content: '';
-        position: absolute;
-        bottom: 100%; /* Позиция фитиля по центру жидкости */
-        left: 50%;
-        width: 0.8vw; /* Ширина фитиля */
-        height: 2vw; /* Высота фитиля */
-        background-image: linear-gradient(#000000,#00000000); /* Цвет фитиля с прозрачностью */
-        border-radius: 5px; /* Закругление краев фитиля */
-        transform: translate(-50%, 50%); /* Центрирование фитиля */
     }
 
-    .liquid::after {
-        content: '';
-        position: absolute;
-        top: -2vw; /* Позиция блика над жидкостью */
-        left: 0;
-        width: 100%;
-        height: 20%; /* Высота блика */
-        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0)); /* Градиент для блика */
-        border-radius: 10px; /* Закругление краев блика */
+    .good-container-icon {
+        padding: 0;
+        margin: 0 auto;
+        display: flex;
+        flex-direction:column;
+        list-style: none;
     }
 
-.text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #67564f;
-    font-size: 1.6vw;
-    font-weight: 200;
-    font-family: 'Brush445', sans-serif;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.text2 {
-    position: absolute;
-    top: 80%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #67564f;
-    font-size: 1.1vw;
-    font-weight: 200;
-    font-family: 'Brush445', sans-serif;
-    text-align: center;
-    margin: 0 auto;
-}
-
-.cylinder:nth-child(1) .liquid {
-    height: 80%; /* Высота жидкости в первом цилиндре */
-}
-
-.cylinder:nth-child(2) .liquid {
-    height: 60%; /* Высота жидкости во втором цилиндре */
-}
-
-.cylinder:nth-child(3) .liquid {
-    height: 40%; /* Высота жидкости в третьем цилиндре */
-}
-
-.cylinder:nth-child(4) .liquid {
-    height: 20%; /* Высота жидкости в четвертом цилиндре */
-}
-
-.smoke {
-    position: absolute;
-    bottom: calc(100% + 10px); /* Позиция дыма над фитилем */
-    left: 50%;
-    width: 20px; /* Ширина дыма */
-    height: 20px; /* Высота дыма */
-    background-color: rgba(169, 169, 169, 0.7); /* Цвет дыма */
-    border-radius: 50%; /* Круглая форма */
-    animation: rise 2s infinite; /* Анимация подъема дыма */
-}
-
-    .smoke:nth-child(1) {
-        animation-delay: 0s;
+    .good-item {
+        padding-right: 5vw;
+        padding-left: 5vw;
+        justify-content:center;
     }
 
-    .smoke:nth-child(2) {
-        animation-delay: 0.5s;
+    .good-imges {
+        width: 50vw;
+        height: 50vw;
+        border-radius: 5%;
     }
 
-    .smoke:nth-child(3) {
-        animation-delay: 1s;
+    .good-text-min {
+        width:80vw;
+        margin:0 auto;
     }
 
-    .smoke:nth-child(4) {
-        animation-delay: 1.5s;
-    }
-@keyframes rise {
-    0% {
-        transform: translate(-50%, 0) scale(1);
-        opacity: 1;
+    .text {
+        font-size: 4.2vw;
     }
 
-    100% {
-        transform: translate(-50%, -100px) scale(1.5);
-        opacity: 0; /* Дым исчезает по мере подъема */
+    .text2 {
+        font-size: 3.4vw;
     }
 }
+
