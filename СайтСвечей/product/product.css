@@ -1,30 +1,22 @@
 @font-face {
     font-family: 'Shantell Sans';
-    src: url('font/ShantellSans-Bold.ttf') format('truetype');
+    src: url('../font/ShantellSans-Bold.ttf') format('truetype');
     font-style: normal;
     font-weight: 700;
 }
 
 @font-face {
     font-family: 'Bad Script';
-    src: url('font/BadScript-Regular.ttf') format('truetype');
+    src: url('../font/BadScript-Regular.ttf') format('truetype');
     font-style: normal;
     font-weight: 400;
 }
 
 @font-face {
     font-family: 'Brush445';
-    src: url('font/Brush445.otf') format('truetype');
+    src: url('../font/Brush445.otf') format('truetype');
     font-style: normal;
     font-weight: 400;
-}
-
-
-
-body {
-    margin: 0;
-    padding: 0;
-    background-color: #e4e2e3;
 }
 
 .menu-phone {
@@ -72,7 +64,7 @@ nav {
 .logo {
     font-size: 62px;
     font: bold;
-    font-family: 'Shantell Sans', sans-serif;
+    font-family: 'Shantell Sans', sans-serif ;
     color: #fff;
     margin-right: auto;
     margin-left: 20px;
@@ -86,9 +78,9 @@ nav {
     color: #fff;
     opacity: 0.8;
     text-decoration: none;
+    background-color: transparent;
+    border: none;
     transition: all 0.5s;
-    background-color:transparent;
-    border:none;
 }
 
     .up-button:hover {
@@ -99,97 +91,49 @@ nav {
 
 
 
-
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 20px;
-}
-
-.product {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 20px;
-    width: 400px;
-    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s;
-    text-decoration:none;
-    color:black;
-}
-
-    .product:hover {
-        transform: scale(1.05);
-    }
-
-    .product img {
-        max-width: 100%;
-        height: auto;
-    }
-
-    .product h3 {
-        font-size: 18px;
-        font-family:'Shantell Sans';
-        margin: 10px 0;
-    }
-
-    .product p {
-        color: #666;
-        font-family: 'Shantell Sans';
-    }
-
-    .price {
-        color: #000;
-        font-weight:bold;
-    }
-
-.product button {
-    background-color: #a67666;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-family: 'Shantell Sans';
+.carousel {
+    position: relative;
     width: 100%;
+    overflow: hidden;
+    border: 2px solid #ddd;
 }
 
-    .product button:hover {
-        background-color: #725146;
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+    .carousel-images img {
+        min-width: 100%;
+        display: block;
     }
 
-
-.ve {
-    margin-top: 5px;
-    width: 95%;
-    text-decoration: none;
-    text-align: center;
-    background-color:  #805b4f;
-    color: white;
+.btn-car {
+    width:40px;
+    height:40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
     border: none;
-    padding: 10px;
     cursor: pointer;
-    font-family: 'Shantell Sans';
+    font-size: 24px;
+    border-radius: 50%;
+    user-select: none;
+    justify-content:center;
+    align-content:center;
 }
 
-    .ve:hover {
-        background-color: #4d362f;
-    }
-
-
-.sort-text {
-    font-size: 1.5vw;
-    font-family: 'Shantell Sans';
- }
-
-.sort-panel{
-    margin-left:5vw;
+.prev {
+    left: 10px;
 }
 
-#filter-sort{
-    width:30%;
+.next {
+    right: 10px;
+}
 
+h1 {
+    font-size: 4vw;
 }
 
 @media (max-width: 1100px) {
@@ -197,10 +141,6 @@ nav {
         display: block;
         order: 1;
         margin-right: 20px;
-    }
-
-    .sort-text {
-        font-size:2vw;
     }
 
     .menu-phone {
@@ -224,21 +164,8 @@ nav {
     #check:checked ~ ul {
         right: 0;
     }
-}
 
-@media (max-width: 720px) {
-
-
-    .sort-text {
-        font-size: 2.5vw;
-    }
-
-}
-
-@media (max-width: 500px) {
-
-
-    .sort-text {
-        font-size: 3vw;
+    h1 {
+        font-size: 6vw;
     }
 }
