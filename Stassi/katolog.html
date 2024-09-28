@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог товаров</title>
+    <link rel="stylesheet" href="katolog-style.css">
+    <meta charset="utf-8">
+</head>
+<body>
+    <header class="cap">
+        <nav class="nav">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                ///
+                <i class="fas fa-bars"></i>
+            </label>
+            <label href="index.html" class="logo">STASSI</label>
+            <ul class="menu-phone">
+                <li><a href="katolog.html" class="up-button">Каталог</a></li>
+                <li><a href="index.html" class="up-button">Преимущества</a></li>
+                <li><a href="index.html #sale" class="up-button">Акции</a></li>
+                <li><a href="index.html #now" class="up-button">Новинки</a></li>
+                <li><a href="index.html #contact" class="up-button">Контакты</a></li>
+                <li><button id="go-to-cart" class="up-button">Корзина<a id="cart-count"> 1</a></button></li>
+            </ul>
+        </nav>
+    </header>
+    <main style="padding-top:200px;">
+        <div class="ob">
+            <label for="filter-sort" class="sort-text sort-panel">Выберите действие:</label>
+            <select id="filter-sort" class="sort-text">
+                <option value="">-- Выберите --</option>
+                <option value="sort-asc">Сортировать по возрастанию цены</option>
+                <option value="sort-desc">Сортировать по убыванию цены</option>
+            </select>
+
+
+            <div class="container" id="product-container">
+
+                <div class="product" data-price="699">
+                    <img src="img/kat (2).jpg" alt="Товар 1">
+                    <h3>Ароматическая свеча «Груша и ландыш»</h3>
+                    <p class="price">Цена: 699 руб.</p>
+                    <button>Добавить в корзину</button>
+                    <div class="ve" onclick="location.href = 'product/product.html';">Подробнее</div>
+                </div>
+
+                <div class="product" data-price="699">
+                    <img src="img/kat (3).jpg" alt="Товар 2">
+                    <h3>Ароматическая свеча «Сирень»</h3>
+                    <p class="price">Цена: 699 руб.</p>
+                    <button>Добавить в корзину</button>
+                    <div class="ve" onclick="location.href = 'product/product1.html';">Подробнее</div>
+                </div>
+
+                <div class="product" data-price="699">
+                    <img src="img/kat (4).jpg" alt="Товар 3">
+                    <h3>Ароматическая свеча «Любимый тюльпан»</h3>
+                    <p class="price">Цена: 699 руб.</p>
+                    <button>Добавить в корзину</button>
+                    <div class="ve" onclick="location.href = 'product/product2.html';">Подробнее</div>
+                </div>
+
+                <div class="product" data-price="1299">
+                    <img src="img/kat (5).jpg" alt="Товар 4">
+                    <h3>Ароматическая свеча «Малина-мята»</h3>
+                    <p class="price">Цена: 1299 руб.</p>
+                    <button>Добавить в корзину</button>
+                    <div class="ve" onclick="location.href = 'product/product3.html';">Подробнее</div>
+                </div>
+
+                <div class="product" data-price="949">
+                    <img src="img/kat (6).jpg" alt="Товар 5">
+                    <h3>Ароматическая свеча «Лимонная дымка»</h3>
+                    <p class="price">Цена: 945 руб.</p>
+                    <button>Добавить в корзину</button>
+                    <div class="ve" onclick="location.href = 'product/product4.html';">Подробнее</div>
+                </div>
+                <!-- Добавьте больше товаров по аналогии -->
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        document.querySelectorAll('.product button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productElement = event.target.parentElement;
+                const productName = productElement.querySelector('h3').innerText;
+                const productPrice = parseInt(productElement.getAttribute('data-price'));
+                const productImage = productElement.querySelector('img').src;
+                const productLink = productElement.querySelector('.ve').onclick.toString().match(/'(.*?)'/)[1];
+
+                // Добавление товара в корзину
+                cart.push({ name: productName, price: productPrice, image: productImage, link: productLink });
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                // Обновление количества товаров в корзине
+                updateCartCount();
+                alert(`${productName} добавлен в корзину!`);
+            });
+        });
+
+        function updateCartCount() {
+            const cartCountElement = document.getElementById('cart-count');
+            cartCountElement.innerText = `: ${cart.length}`;
+        }
+
+        // Переход в корзину
+        document.getElementById('go-to-cart').addEventListener('click', () => {
+            window.location.href = 'cart.html';
+        });
+
+        updateCartCount();
+
+
+        // Обработка выбора из дропдауна
+        document.getElementById('filter-sort').addEventListener('change', (event) => {
+            const selectedValue = event.target.value;
+
+            if (selectedValue === 'filter-expensive') {
+                filterExpensive();
+            } else if (selectedValue === 'sort-asc') {
+                sortProducts(true);
+            } else if (selectedValue === 'sort-desc') {
+                sortProducts(false);
+            }
+
+            // Сброс выбора после выполнения действия
+            event.target.value = '';
+        });
+
+        /*
+        // Функция для фильтрации товаров
+        document.getElementById('filter-expensive').addEventListener('click', () => {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                const price = parseInt(product.getAttribute('data-price'));
+                if (price <= 1500) {
+                    product.style.display = 'none'; // Скрыть товар
+                } else {
+                    product.style.display = 'block'; // Показать товар
+                }
+            });
+        });*/
+
+        // Функция для сортировки товаров по возрастанию цены
+        document.getElementById('sort-asc').addEventListener('click', () => {
+            sortProducts(true);
+        });
+
+        // Функция для сортировки товаров по убыванию цены
+        document.getElementById('sort-desc').addEventListener('click', () => {
+            sortProducts(false);
+        });
+
+        function sortProducts(asc) {
+            const container = document.getElementById('product-container');
+            const products = Array.from(container.children);
+
+            products.sort((a, b) => {
+                const priceA = parseInt(a.getAttribute('data-price'));
+                const priceB = parseInt(b.getAttribute('data-price'));
+                return asc ? priceA - priceB : priceB - priceA;
+            });
+
+            // Очистить контейнер и добавить отсортированные товары
+            container.innerHTML = '';
+            products.forEach(product => container.appendChild(product));
+        }
+
+    </script>
+</body>
+</html>

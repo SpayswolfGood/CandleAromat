@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <style>
+        @font-face {
+            font-family: 'Shantell Sans';
+            src: url('font/ShantellSans-Bold.ttf') format('truetype');
+            font-style: normal;
+            font-weight: 700;
+        }
+
+        @font-face {
+            font-family: 'Bad Script';
+            src: url('font/BadScript-Regular.ttf') format('truetype');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        @font-face {
+            font-family: 'Brush445';
+            src: url('font/Brush445.otf') format('truetype');
+            font-style: normal;
+            font-weight: 400;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e4e2e3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .ob{
+            text-align:center;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .cart-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 20px;
+            width: 400px;
+            box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: black;
+        }
+
+            .cart-item:hover {
+                transform: scale(1.05);
+            }
+
+            .cart-item img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .cart-item h3 {
+                font-size: 18px;
+                font-family: 'Shantell Sans';
+                margin: 10px 0;
+            }
+
+            .cart-item p {
+                color: #666;
+                font-family: 'Shantell Sans';
+                width:100%;
+            }
+
+            .cart-item button {
+                background-color: #a67666;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                font-family: 'Shantell Sans';
+                width: 100%;
+            }
+
+                .cart-item button:hover {
+                    background-color: #725146;
+                }
+
+        .ve {
+            margin-top: 5px;
+            width: 95%;
+            text-decoration: none;
+            text-align: center;
+            background-color: #805b4f;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-family: 'Shantell Sans';
+        }
+
+            .ve:hover {
+                background-color: #4d362f;
+            }
+
+        .menu-phone {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            gap: 30px;
+            margin-right: 30px;
+        }
+
+        menu-phone li {
+            margin-right: 20px;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background-image: linear-gradient(90deg,#815849,#653f31);
+            display: flex;
+            flex-direction: row;
+            padding: 11px;
+            text-align: center;
+            gap: 30px;
+            align-items: center;
+            z-index: 10;
+            opacity: 0.9;
+        }
+
+        .checkbtn {
+            font-size: 40px;
+            color: white;
+            cursor: pointer;
+            display: none;
+            font-weight: 800;
+        }
+
+        #check {
+            display: none;
+        }
+
+        .cap {
+        }
+
+        .logo {
+            font-size: 62px;
+            font: bold;
+            font-family: 'Shantell Sans', sans-serif;
+            color: #fff;
+            margin-right: auto;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .up-button {
+            font-size: 24px;
+            font-family: sans-serif;
+            font-weight: bold;
+            color: #fff;
+            opacity: 0.8;
+            text-decoration: none;
+            transition: all 0.5s;
+            background-color: transparent;
+            border: none;
+        }
+
+            .up-button:hover {
+                opacity: 1;
+                font-size: 25px;
+                cursor: pointer;
+            }
+
+        .text-cor {
+            color: #67564f;
+            font-size: 36px;
+            font-weight: 200;
+            font-family: 'Brush445', sans-serif;
+            text-align: center;
+            padding-top:200px;
+        }
+
+
+        .clear-cart-button {
+            background-color: #684E3D; /* Коричневый цвет, подобный кофе */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+            .clear-cart-button:hover {
+                background-color: #503626; /* Более темный коричневый при наведении */
+            }
+
+
+        @media (max-width: 1060px) {
+            .checkbtn {
+                display: block;
+                order: 1;
+                margin-right: 20px;
+            }
+
+            .sort-text {
+                font-size: 2vw;
+            }
+
+            .menu-phone {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                margin-right: 0;
+                background-image: linear-gradient(90deg,#815849,#653f31);
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                transition: all 0.3s;
+            }
+
+                .menu-phone li {
+                    margin: 20px 0;
+                }
+
+
+            #check:checked ~ ul {
+                right: 0;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <header class="cap">
+        <nav class="nav">
+            <input type="checkbox" id="check">
+            <label for="check" class="checkbtn">
+                ///
+                <i class="fas fa-bars"></i>
+            </label>
+            <label href="index.html" class="logo">STASSI</label>
+            <ul class="menu-phone">
+                <li><a href="katolog.html" class="up-button">Каталог</a></li>
+                <li><a href="index.html #good" class="up-button">Преимущества</a></li>
+                <li><a href="index.html #sale" class="up-button">Акции</a></li>
+                <li><a href="index.html #contact" class="up-button">Контакты</a></li>
+                <li><a href="index.html #now" class="up-button">Новинки</a></li>
+                <li><button id="go-to-cart" class="up-button">Корзина<a id="cart-count"> 1</a></button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="ob">
+            <h2 class="text-cor">
+                Содержимое корзины
+            </h2>
+            <div class="container" id="cart-items"></div>
+            <button id="clear-cart" class="clear-cart-button">Очистить корзину</button>
+            <button id="go-back" class="clear-cart-button">Вернуться в магазин</button>
+        </div>
+    </main>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            cartItemsContainer.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Корзина пуста.</p>';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const cartItemDiv = document.createElement('div');
+                cartItemDiv.className = 'cart-item';
+                cartItemDiv.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}">
+                    <p>${item.name} - ${item.price} руб.</p>
+                    <button class="remove-btn" data-index="${index}">Удалить из корзины</button>
+                    <div class="ve" onclick="location.href ='${item.link}'">Товар</div>
+                    `;
+                cartItemsContainer.appendChild(cartItemDiv);
+            });
+
+            // Добавляем обработчики событий для кнопок удаления
+            const removeButtons = document.querySelectorAll('.remove-btn');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const index = event.target.getAttribute('data-index');
+                    removeFromCart(index);
+                });
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1); // Удаляем товар из массива
+            localStorage.setItem('cart', JSON.stringify(cart)); // Обновляем localStorage
+            displayCartItems(); // Обновляем отображение корзины
+        }
+
+        // Очистка корзины
+        document.getElementById('clear-cart').addEventListener('click', () => {
+            localStorage.removeItem('cart');
+            cart = [];
+            displayCartItems();
+        });
+
+        // Возврат в магазин
+        document.getElementById('go-back').addEventListener('click', () => {
+            window.location.href = 'index.html'; // Замените на имя вашего файла с магазином
+        });
+
+        displayCartItems();
+    </script>
+
+</body>
+</html>
